@@ -1,0 +1,12 @@
+# Uploaded candidate photos: only images are served, and nothing here ever runs as code
+# (a file disguised as a photo can't be executed even if one gets in)
+Require all denied
+<FilesMatch "\.(?i:jpe?g|png|webp)$">
+    Require all granted
+</FilesMatch>
+
+<IfModule php_module>
+    php_flag engine off
+</IfModule>
+RemoveHandler .php .phtml .phar .php3 .php4 .php5 .php7 .php8 .pht
+RemoveType .php .phtml .phar .php3 .php4 .php5 .php7 .php8 .pht

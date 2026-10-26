@@ -1,0 +1,18 @@
+# ---------------------------------------------------------------
+# Web server rules for the voting system (Apache / XAMPP)
+# ---------------------------------------------------------------
+
+# No folder listings, so nobody can browse the project's files
+Options -Indexes
+
+# Database dumps, notes, backups and hidden files are never served
+# (votesys.sql holds every Voter's ID)
+<FilesMatch "(\.(?i:sql|md|log|bak|old|orig|swp|ini|env|dist|zip)$)|(^\.)">
+    Require all denied
+</FilesMatch>
+
+# Same protections as the PHP pages, for images, CSS and other static files
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+</IfModule>
